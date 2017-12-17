@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>对局查询</title>
+</head>
+<script type="text/javascript">
+function showgames(str) {
+	if (str=="")
+	{
+	}
+	
+	xmlhttp = new XMLHttpRequest();
+	
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+		//document.getElementById("showstatus").innerHTML=xmlhttp.readyState;
+		//alert(xmlhttp.status);
+		document.getElementById("ShowGameList").innerHTML=xmlhttp.responseText;	
+		//document.getElementById("ShowGameList").innerHTML="Gamelist will be here.";	
+		}
+	}
+	//xmlhttp.open("POST","gamequery.php", true);
+	
+	var playername = document.getElementById("textPlayerName").value;
+	if (playername=="")
+	{
+	//	alert("playername is empty!" + playername + "||");
+		}
+	
+	
+//	xmlhttp.open("POST","gamequery.php?player='" + playername + "'", true);
+	xmlhttp.open("POST","ToBeDeleted/test1.php" , true);	
+	xmlhttp.send();
+	
+<form id="gamequery" name="gamequery" action=""javascript:showgamesbyGameID();"" method="post">
+  <p>&nbsp;</p>
+  <p>
+    <label for="textGameID">对局记录号:</label>
+    <input type="text" name="textGameID" id="textGameID">
+  </p>
+  <p>
+    <input type="submit" name="btngamequery" id="btngamequery" value="对局查询">
+  这个按钮会用html的form action方式启动gamequery.php，并刷空页面显示。不是我想要的结果。  </p>
+</form>
+}
+
+function showgamesByGameID(str1) {
+	
+}
+
+
+
+</script>
+
+
+
+<body>
+<div align="center">
+<p>对局结果查询</p>
+</div>
+<p>按条件查询对局</p>
+<form id="form1" name="form1" method="post" action="javascript:showgames();">
+  <p>
+    <label for="textPlayerName">对局者姓名:</label>
+    <input type="text" name="textPlayerName" id="textPlayerName">
+  </p>
+  <p>
+    <label for="textMemberID">会员号:</label>
+    <input type="text" name="textMemberID" id="textMemberID">
+  </p>
+  <p>
+    <input type="submit" name="submit" id="submit" value="按条件查询"> 
+  这个按钮可以按对局者姓名</p>
+  <p>如果不输入对局者姓名，则显示全部对局记录。</p>
+  <p>&nbsp;</p>
+</form>
+<div id="ShowGameList">
+  <p>Content for  id "ShowGameList" Goes Here</p>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>
+  <input type="button" name="button" id="button" value="显示全部对局" onClick="showgames()">
+  这个按钮会哟过AJAX提交请求，并把查询结果显示在下面页内。</p>
+<form id="gamequery" name="gamequery" action="javascript:showgamesbyGameID();" method="post">
+  <p>&nbsp;</p>
+  <p>
+    <label for="textGameID">对局记录号:</label>
+    <input type="text" name="textGameID" id="textGameID">
+  </p>
+  <p>
+    <input type="submit" name="btngamequery" id="btngamequery" value="对局查询">
+  这个按钮会用html的form action方式启动gamequery.php，并刷空页面显示。不是我想要的结果。  </p>
+</form>
+
+
+
+
+
+
+<div id="showstatus">
+  <p> error and status show here: </p>
+</div>
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

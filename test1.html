@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test1</title>
+</head>
+<script type="text/javascript">
+
+function getDD() {
+var JJ1 = '{"Player":['+ '{"name":"LiLei","age":19,"sex":"male"}]}';
+//var JJ1 = {"name":"LiLei","age":19,"sex":"male"};
+var JP1 = JSON.parse(JJ1);
+//var JP2 = JSON.stringify(JP1);
+//alert(typeif(JP2));
+
+var text = '{"employees":[' +
+'{"firstName":"John","lastName":"Doe" },' +
+'{"firstName":"Anna","lastName":"Smith" },' +
+'{"firstName":"Peter","lastName":"Jones" }]}';
+
+obj = JSON.parse(text);
+document.getElementById("DD").innerHTML=JP1.Player[0].name;
+//document.getElementById("demo").innerHTML= obj.employees[1].firstName + " " + obj.employees[1].lastName;
+
+}
+
+</script>
+
+
+<body>
+<p>测试页 </p>
+<p>&nbsp;</p>
+<form id="form1" name="form1" method="post" action="test.php">
+  <p>&nbsp;</p>
+  <p>
+    <label for="textfield">Text Field:</label>
+    <input type="text" name="textfield" id="textfield">
+  </p>
+  <p>
+    <input type="submit" name="submit" id="submit" value="Submit">
+  </p>
+  <p>&nbsp;</p>
+</form>
+<div id="DD">Content for  id "DD" Goes Here</div>
+<p>
+  <input type="button" name="button" id="button" value="Button" onClick="getDD();">
+</p>
+<p id="demo"></p>
+</body>
+</html>

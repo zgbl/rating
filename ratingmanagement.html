@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>等级分管理</title>
+
+</head>
+<script type="text/jscript">
+
+function showgameByGameID(gameID) {
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+		document.getElementById("ShowGame").innerHTML=xmlhttp.responseText;	
+		}
+	}
+	var GameID = document.getElementById("textGameID").value;
+	if (GameID=="")
+	{
+		}
+	xmlhttp.open("POST","PHP/gamequerybyGameID.php?GameID='" + GameID + "'", true);
+	xmlhttp.send();	
+}
+
+function calcRating() {
+xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+		document.getElementById("ShowRatingStatus").innerHTML=xmlhttp.responseText;	
+		}
+	}
+	//alert("I am working");
+	var GameID = document.getElementById("textGameID").value;
+	if (GameID=="")
+	{
+		}
+	xmlhttp.open("POST","calcRating2.php?GameID='" + GameID + "'", true);
+	xmlhttp.send();	
+}	
+
+function showunprocess() {
+xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+		document.getElementById("ShowGame").innerHTML=xmlhttp.responseText;	
+		}
+	}
+//	alert("I am working.");
+	xmlhttp.open("POST","showunprocess.php", true);
+	xmlhttp.send();	
+}		
+
+
+function showallgames() {
+xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+		document.getElementById("ShowGame").innerHTML=xmlhttp.responseText;	
+		}
+	}
+//	alert("I am working.");
+	xmlhttp.open("POST","showallgames.php", true);
+	xmlhttp.send();	
+}		
+</script>
+
+<body>
+<p><a href="index.html">主页</a></p>
+<div align="center">
+    <h1>等级分管理
+    </h1>
+</div>
+
+<div align="center">
+<p>&nbsp;</p>
+<p>等级分管理</p>
+</div>
+
+<form id="form1" name="form1" method="post">
+  <p>
+    <label for="textdate">对局日期:</label>
+    <input name="textdate" type="text" required="required" id="textdate">
+  </p>
+  <p>
+    <label for="textfGmaeInfo">比赛名称:</label>
+    <input type="text" name="textGameInfo" id="textGameInfo">
+  </p>
+  <p>
+    <label for="textbplayerA">A方:</label>
+    <input type="text" name="textbplayerA" id="textbplayerA">
+     </p>
+  <p>
+    <label for="textplayerART">A方赛前等级分:</label>
+    <input type="text" name="textplayerART" id="textplayerART">
+  </p>
+  <p>
+    <label for="textplayerB">B方:</label>
+    <input type="text" name="textplayerB" id="textplayerB">
+  </p>
+  <p>
+    <label for="textplayerBRT">B方赛前等级分:</label>
+    <input type="text" name="textplayerBRT" id="textplayerBRT">
+  </p>
+  <p>
+    <label for="textresult	">结果（胜利方）:</label>
+    <input type="text" name="textresult" id="textresult">
+  （黑白） </p>
+  <p>
+    <label for="texthandicap">让子:</label>
+    <input type="text" name="texthandicap" id="texthandicap">
+    （默认为0） </p>
+  <p>
+    <label for="textkomi">贴目:</label>
+    <input type="text" name="textkomi" id="textkomi">
+    （默认7.5）</p>
+</form>
+<form id="form2" name="form2" method="post" action="javascript:showgameByGameID();">
+  <p>
+    <label for="textGameID">GameID:</label>
+    <input type="text" name="textGameID" id="textGameID">
+  </p>
+  <p>
+    <input type="submit" name="submit" id="submit" value="按对局记录ID查询">
+    <input type="button" name="btnshowunprocess" id="btnshowunprocess" value="显示全部未处理对局" onClick="showunprocess();">
+    <input type="button" name="btnShowAllGames" id="btnShowAllGames" value="显示全部对局" onClick="showallgames();">
+  </p>
+  <p>&nbsp;</p>
+</form>
+<p>
+
+  <input type="button" name="button" id="button" value="批准等级分" onClick="calcRating();">
+</p>
+<div id="ShowGame">显示要处理的对局记录</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="ShowRatingStatus">显示等级分批准状态</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

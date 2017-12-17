@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AppendChildTest</title>
+</head>
+
+<body>
+<p>This is a Test page to test the appendChild and </p>
+
+<div>
+  <p>ddd </p>
+  
+  <input type="button" name="button" id="button" onClick="inserttext()" value="Button">
+  
+  <script type="text/javascript">
+  
+  function inserttext() {
+  var ttt = "This is something to be insert";
+  var pp2 = document.getElementById("p1");
+  
+  var ppp = document.createElement("p");
+  
+  pp2.appendChild(ttt);
+  }
+  
+  </script>
+  
+  <p id="p1">
+</div>
+  
+  </p>
+  <p>&nbsp;</p>
+  <p>dahaio</p>
+  <p>&nbsp;</p>
+<p>djai</p>
+
+<p>
+  <input type="button" name="button2" id="button2" onClick="insert2()" value="Button2">
+ 点这个按钮，在页面添加内容</p>
+<div id="Div2">
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
+
+
+<script type="text/javascript">
+function insert2() {
+var ddd = document.getElementById("Div2");
+var ppp = document.createElement("p");
+ppp.innerHTML="添加了内容的";
+ddd.appendChild(ppp);	
+}
+</script>
+
+<p>&nbsp;</p>
+</body>
+</html>

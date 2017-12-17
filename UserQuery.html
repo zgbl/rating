@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户查询 </title>
+</head>
+
+<script type="text/jscript">
+
+function QueryUserRecord() {
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+		document.getElementById("ShowRecords").innerHTML=xmlhttp.responseText;	
+		}
+	}
+	var UserID = document.getElementById("textUserID").value;
+	if (UserID=="")
+	{
+		}
+	xmlhttp.open("POST","SingleUserQuery.php?GameID='" + UserID + "'", true);
+	xmlhttp.send();	
+}
+
+
+</script>
+
+
+<body>
+<p>&nbsp;</p>
+<p>用户查询</p>
+<form id="frmuserquery" name="frmuserquery" action="PHP/queryuser.php" method="post">
+  <p>
+    <label for="textminigame">对局数大于:</label>
+    <input type="text" name="textminigame" id="textminigame">
+  </p>
+<p>
+  <input type="submit" name="submit" id="submit" value="显示所有用户">
+  此钮按等级分排序显示全部用户</p>
+
+<p>
+<label for="textuserdisplay">用户显示在这里:</label>
+<textarea name="textuserdisplay" id="textuserdisplay"> </textarea>
+</p>
+
+</form>
+
+
+<form id="form1" name="form1" method="post">
+  <p>&nbsp;</p>
+  <p>单击下面按钮，用JavaScript查询</p>
+  <p>  </p>
+</form>  
+
+    <input type="submit" name="submit2" id="submit2" value="显示全部用户">
+    这个按钮还没写好
+    <p>&nbsp;</p>
+  <p>
+    <label for="textUserID">查询指定用户:</label>
+    <input name="textUserID" type="text" id="textUserID" value="填入要查的用户名" onfocus = "value=''">
+  
+    <input type="submit" name="btnQuery1" id="btnQuery1" value="查询指定用户成绩" onClick="QueryUserRecord()">
+  <div id="ShowRecords">用户成绩会在这里显示</div>
+  <p>&nbsp;</p>  
+   
+<script language="javascript" >
+	function ppp(){
+	document.getElementById("textfield").value="写点什么";
+	}
+	button2.onclick = ppp;
+	
+	</script>
+    
+
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+<p>&nbsp;</p>
+  <p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>
