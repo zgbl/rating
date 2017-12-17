@@ -1,4 +1,4 @@
 <?php
 
-echo "AJAX is working..";
+echo "AJAX is working.  dd.";
 ?>
